@@ -1,0 +1,9 @@
+@import '../../styles//variables.scss';
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: $dashboardBg;
+  height: 100vh;
+}

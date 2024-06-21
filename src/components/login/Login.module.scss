@@ -1,37 +1,223 @@
 @import '../../styles/variables.scss';
 
 .loginHome {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: 500px) {
     display: flex;
-    justify-content: space-between;
-    padding: 100px;
+    flex-direction: column;
     width: 100%;
+    height: 100vh;
+  }
 
-    &__landing {
-        display: flex;
-        flex-direction: column;
-        width: 50%;
+  &__landing {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    width: 50%;
 
-        &__caption {
-            display: flex;
-            gap: 8px;
-
-            &__img {
-                width: 20px;
-                height: 21px;
-            }
-
-            &__text {
-                font-size: 21px;
-                color: $dark;
-                font-weight: 600;
-                margin-top: -5px;
-            }
-        }
-
-        &__bgImg {
-            margin: 50px;
-            width: 550px;
-            height: 300px;
-        }
+    @media (max-width: 500px) {
+      padding: 30px;
+      width: 100%;
     }
+
+    @media (max-width: 900px) and (min-width: 501px) {
+      padding: 35px;
+    }
+
+    &__caption {
+      display: flex;
+      gap: 8px;
+
+      &__img {
+        width: 20px;
+        height: 21px;
+      }
+
+      &__text {
+        font-size: 21px;
+        color: $dark;
+        font-weight: 600;
+        margin-top: -5px;
+      }
+    }
+
+    &__bgImg {
+      margin-top: 100px;
+      width: 550px;
+      height: 300px;
+      transition: width 0.3s ease, height 0.3s ease;
+
+      @media (max-width: 1200px) {
+        width: 450px;
+        height: 250px;
+      }
+
+      @media (max-width: 992px) {
+        width: 400px;
+        height: 225px;
+      }
+
+      @media (max-width: 768px) {
+        width: 230px;
+        height: 250px;
+      }
+
+      //   @media (max-width: 576px) {
+      //     width: 250px;
+      //     height: 175px;
+      //   }
+
+      @media (max-width: 500px) {
+        width: 250px;
+        height: 175px;
+        margin-top: 30px;
+      }
+    }
+  }
+  &__login {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 10px 10px 10px 10px rgba(236, 231, 231, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    height: 100vh;
+    padding: 90px;
+
+    @media (max-width: 500px) {
+      padding: 20px;
+      width: 100%;
+    }
+
+    @media (max-width: 900px) and (min-width: 501px) {
+      padding: 35px;
+    }
+
+    &__greeting {
+      font-size: 32px;
+      font-weight: 700;
+      color: $dark;
+      margin-top: 90px;
+
+      @media (max-width: 500px) {
+        margin-top: 30px;
+      }
+    }
+    &__instruction {
+      font-size: 12px;
+    }
+
+    &__email,
+    &__password {
+      display: flex;
+      position: relative;
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid rgba(84, 95, 125, 0.15);
+    }
+    &__email {
+      margin-top: 40px;
+    }
+    &__password {
+      margin-top: 20px;
+    }
+    &__forgotpw {
+      font-size: 10px;
+      margin-top: 15px;
+      color: $selectedBg;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    &__loginBtn {
+      margin-top: 30px;
+      color: white;
+      padding: 12px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      background-color: $selectedBg;
+      border: none;
+      cursor: pointer;
+    }
+
+    &__passwordshow {
+      display: block;
+      position: absolute;
+      top: 22.3rem;
+      right: 6rem;
+      color: rgba(57, 205, 204, 1);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+
+      @media (max-width: 500px) {
+        display: block;
+        position: absolute;
+        top: 32.5rem;
+        right: 2rem;
+        color: rgba(57, 205, 204, 1);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      @media (max-width: 900px) and (min-width: 501px) {
+        display: block;
+        position: absolute;
+        top: 19rem;
+        right: 2.9rem;
+        color: rgba(57, 205, 204, 1);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+
+    &__passwordshowExtra {
+      display: block;
+      position: absolute;
+      top: 24rem;
+      right: 6rem;
+      color: rgba(57, 205, 204, 1);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      
+      @media (max-width: 500px) {
+        display: block;
+        position: absolute;
+        top: 34rem;
+        right: 2rem;
+        color: rgba(57, 205, 204, 1);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      @media (max-width: 900px) and (min-width: 501px) {
+        display: block;
+        position: absolute;
+        top: 20.4rem;
+        right: 2.9rem;
+        color: rgba(57, 205, 204, 1);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+
+    &__errorBorder {
+      border: 1px solid $error;
+    }
+
+    &__errorMessage {
+      color: $error;
+      font-size: 0.775rem;
+      margin-top: 5px;
+    }
+  }
 }

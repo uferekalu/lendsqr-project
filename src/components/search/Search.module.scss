@@ -1,0 +1,35 @@
+@import '../../styles//variables.scss';
+
+.search {
+  display: flex;
+  &__input {
+    display: flex;
+    padding: 10px;
+    border: 1px solid rgba(84, 95, 125, 0.15);
+    border-radius: 5px 0px 0px 5px;
+    &::placeholder {
+      font-size: 11px;
+      color: $text;
+    }
+    &:focus {
+        outline: none;
+        border-top: 1px solid rgba(84, 95, 125, 0.15);
+        border-bottom: 1px solid rgba(84, 95, 125, 0.15);
+        border-left: 1px solid rgba(84, 95, 125, 0.15);
+        border-right: none;
+    }
+  }
+
+  &__holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: $searchBtnBg;
+    border-radius: 0px 5px 5px 0px;
+    &__icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}

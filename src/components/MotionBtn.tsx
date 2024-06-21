@@ -9,7 +9,7 @@ export interface IButton {
   className?: string;
 }
 
-const ReusableButton: React.FC<IButton> = ({
+const MotionButton: React.FC<IButton> = ({
   text,
   onClick,
   type = 'button',
@@ -18,8 +18,8 @@ const ReusableButton: React.FC<IButton> = ({
 }) => {
   return (
     <motion.button
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      whileHover={{ scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
       onClick={onClick}
       type={type}
       disabled={disabled}
@@ -33,4 +33,4 @@ const ReusableButton: React.FC<IButton> = ({
   );
 };
 
-export default ReusableButton;
+export default MotionButton;
