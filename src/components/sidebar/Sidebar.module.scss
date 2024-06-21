@@ -1,0 +1,160 @@
+@import '../../styles//variables.scss';
+
+.sidebar {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 210px;
+  background-color: $bg;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  padding-bottom: 20px;
+
+  @media (max-width: 580px) {
+    display: block;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 50px;
+    &__organization__text,
+    &__organization__downarrow,
+    &__dashboard__text,
+    &__customer__text,
+    &__user__text,
+    &__guarantor__text,
+    &__loan__text,
+    &__savings__text,
+    &__loanrequest__text,
+    &__whitelist__text,
+    &__decision__text,
+    &__karma__text,
+    &__businesses__text,
+    &__businessorg__text,
+    &__loanproduct__text,
+    &__savingsproduct__text,
+    &__feesandcharges__text,
+    &__transaction__text,
+    &__services__text,
+    &__servicesaccount__text,
+    &__settlement__text,
+    &__reports__text,
+    &__settings__text,
+    &__preference__text,
+    &__feespricing__text,
+    &__auditlogs__text,
+    &__systemmsg__text,
+    &__signout__text {
+      display: none;
+    }
+
+    &__mobile {
+      width: 210px;
+      &__orgText,
+      &__downarrow,
+      &__dashboard,
+      &__customer,
+      &__user,
+      &__guarantor,
+      &__loans,
+      &__decision,
+      &__savings,
+      &__loanrequests,
+      &__whitelist,
+      &__karma,
+      &__businesses,
+      &__businessorg,
+      &__loanproduct,
+      &__savingsproduct,
+      &__feesandcharges,
+      &__transaction,
+      &__services,
+      &__servicesaccount,
+      &__settlement,
+      &__reports,
+      &__settings,
+      &__preference,
+      &__feespricing,
+      &__auditlogs,
+      &__systemmsg, &__signout {
+        display: flex;
+      }
+    }
+  }
+
+  &__organization,
+  &__dashboard,
+  &__user,
+  &__guarantor,
+  &__loan,
+  &__decision,
+  &__savings,
+  &__whitelist,
+  &__karma,
+  &__businessorg,
+  &__loanrequest,
+  &__loanproduct,
+  &__savingsproduct,
+  &__feesandcharges,
+  &__transaction,
+  &__services,
+  &__servicesaccount,
+  &__settlement,
+  &__reports,
+  &__preference,
+  &__feespricing,
+  &__auditlogs,
+  &__systemmsg,
+  &__signout {
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 15px;
+
+    &__img {
+      width: 16px;
+      height: 16px;
+      margin-left: 5px;
+    }
+
+    &__text {
+      font-size: 11px;
+      color: $text;
+    }
+
+    &__downarrow {
+      width: 11px;
+      height: 11px;
+      margin-top: 1px;
+    }
+
+    &:hover {
+      background-color: $hoveredBg;
+    }
+  }
+  &__user,
+  &__businessorg {
+    margin-top: -5px;
+  }
+  &__signout {
+    margin-top: 30px;
+    // border-top: 1px solid $dark;
+  }
+
+  &__customer,
+  &__businesses,
+  &__settings {
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 15px;
+    &__text {
+      margin-left: 5px;
+      font-size: 11px;
+      color: $text;
+      margin-top: -1px;
+      font-weight: 500;
+    }
+  }
+}

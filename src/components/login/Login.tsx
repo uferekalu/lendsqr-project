@@ -14,6 +14,11 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -45,7 +50,7 @@ const Login: React.FC = () => {
     }
     if (!password) {
       setPasswordError('Password is required');
-      return
+      return;
     }
     if (!emailError && !passwordError) {
       // Handle login logic here
@@ -85,7 +90,7 @@ const Login: React.FC = () => {
           </MotionSpan>
         )}
         <MotionInput
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           placeholder="Password"
           className={`${classes.loginHome__login__password} ${
             passwordError ? classes.loginHome__login__errorBorder : ''
@@ -99,11 +104,12 @@ const Login: React.FC = () => {
           </MotionSpan>
         )}
         <MotionSpan
+          onClick={handleShowPassword}
           className={`${classes.loginHome__login__passwordshow} ${
             emailError ? classes.loginHome__login__passwordshowExtra : ''
           }`}
         >
-          SHOW
+          {showPassword ? 'HIDE': 'SHOW'}
         </MotionSpan>
         <MotionSpan className={classes.loginHome__login__forgotpw}>
           FORGOT PASSWORD?

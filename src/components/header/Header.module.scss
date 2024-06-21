@@ -12,24 +12,40 @@
 
   &__userProfile {
     display: flex;
-    gap: 25px;
+
+    @media (min-width: 580px) {
+      gap: 25px;
+    }
+
+    @media (max-width: 580px) {
+      display: none;
+    }
     &__doc {
-        font-size: 12px;
-        font-weight: 500;
-        text-decoration: underline;
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: underline;
     }
     &__notification {
-        width: 18px;
-        height: 20px;
+      width: 18px;
+      height: 20px;
     }
     &__user {
-        width: 40px;
-        height: 40px;
-        margin-top: -9px;
+      width: 40px;
+      height: 40px;
+      margin-top: -9px;
     }
     &__name {
-        font-size: 12px;
-        font-weight: 500;
+      font-size: 12px;
+      font-weight: 500;
+      margin-left: -20px;
+    }
+  }
+  &__userProfileMobile {
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+    @media (min-width: 580px) {
+      display: none;
     }
   }
 }
