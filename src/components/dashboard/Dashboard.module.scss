@@ -3,6 +3,14 @@
 .dashboard {
   display: flex;
   flex-direction: column;
-  width: 100%;
   background-color: $dashboardBg;
+  width: 100%;
+  margin-top: 70px;
+  overflow-x: auto;
+
+  &__main {
+    display: flex;
+    flex: 1;
+    width: 100%;
+  }
 }

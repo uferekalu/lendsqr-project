@@ -4,11 +4,15 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  width: 210px;
+  width: 250px;
   background-color: $bg;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, box-shadow 0.3s;
   padding-bottom: 20px;
+
+//   @media (max-width: 900px) {
+//     width: 220px;
+//   }
 
   @media (max-width: 580px) {
     display: block;
