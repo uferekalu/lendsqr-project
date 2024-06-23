@@ -12,6 +12,7 @@ export interface Guarantor {
 }
 
 export interface User {
+  id: number
   organization: string;
   name: string;
   username: string;

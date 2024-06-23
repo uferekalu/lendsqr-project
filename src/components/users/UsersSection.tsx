@@ -16,45 +16,45 @@ const UsersSection: React.FC = () => {
   const [activeUsers, setActiveUsers] = useState<number>();
   const [usersWithLoan, setUsersWithLoan] = useState<number>();
   const [usersWithSavings, setUsersWithSavings] = useState<number>();
-  console.log('users with savinggs', usersWithSavings);
 
   useEffect(() => {
-    async function fetchData() {
-      const route = 'd25a51e0-37de-4f95-900c-80bce7b52efc';
+    const fetchData = async () => {
+      const route = 'e3be5931-6c3e-441b-ab1b-f6e5c41d18ba';
       try {
         const usersData = await callAPI(route);
         if (usersData) {
           localStorage.setItem('usersDetails', JSON.stringify(usersData));
           setUsers(usersData);
+          updateAnalytics(usersData);
         }
       } catch (error) {
         console.error('Error fetching users:', error);
       }
-    }
+    };
 
     const storedUsers = localStorage.getItem('usersDetails');
     if (storedUsers) {
-      setUsers(JSON.parse(storedUsers));
+      const usersData = JSON.parse(storedUsers);
+      setUsers(usersData);
+      updateAnalytics(usersData);
     } else {
       fetchData();
     }
-
-    if (storedUsers) {
-      const allUsers = JSON.parse(storedUsers);
-      const activeUsers = allUsers.filter(
-        (user: User) => user.status === 'active',
-      );
-      const usersWithLoan = allUsers.filter(
-        (user: User) => Number(user.loanRepayment) > Number(user.monthlyIncome),
-      );
-      const usersWithSavings = allUsers.filter(
-        (user: User) => Number(user.monthlyIncome) > Number(user.loanRepayment),
-      );
-      setActiveUsers(activeUsers.length);
-      setUsersWithLoan(usersWithLoan.length);
-      setUsersWithSavings(usersWithSavings.length);
-    }
   }, []);
+
+  const updateAnalytics = (users: User[]) => {
+    const activeUsers = users.filter((user) => user.status === 'active').length;
+    const usersWithLoan = users.filter(
+      (user) => Number(user.loanRepayment) > Number(user.monthlyIncome),
+    ).length;
+    const usersWithSavings = users.filter(
+      (user) => Number(user.monthlyIncome) > Number(user.loanRepayment),
+    ).length;
+    setActiveUsers(activeUsers);
+    setUsersWithLoan(usersWithLoan);
+    setUsersWithSavings(usersWithSavings);
+  };
+
   return (
     <MotionDiv className={classes.usersection}>
       {users.length > 0 ? (
@@ -166,7 +166,7 @@ const UsersSection: React.FC = () => {
               </MotionSpan>
             </MotionDiv>
           </MotionDiv>
-          <UserTable users={users} />
+          <UserTable users={users} setUsers={setUsers} updateAnalytics={updateAnalytics} />
         </MotionDiv>
       ) : (
         <MotionDiv className={classes.usersection__loadingholder}>
