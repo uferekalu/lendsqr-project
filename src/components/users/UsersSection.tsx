@@ -6,15 +6,16 @@ import { callAPI } from '../../utils/api';
 import MotionSpan from '../MotionSpan';
 import MotionImage from '../MotionImg';
 import totalUsersIcon from '../../images/totalUsersIcon.svg';
-import totalActiveUsers from '../../images/activeUsersIcon.svg'
-import totalUsersWithLoan from '../../images/usersWithLoanIcon.svg'
-import totalUsersWithSavings from '../../images/usersWithSavingsIcon.svg'
+import totalActiveUsers from '../../images/activeUsersIcon.svg';
+import totalUsersWithLoan from '../../images/usersWithLoanIcon.svg';
+import totalUsersWithSavings from '../../images/usersWithSavingsIcon.svg';
+import UserTable from './UserTable';
 
 const UsersSection: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [activeUsers, setActiveUsers] = useState<number>()
-  const [usersWithLoan, setUsersWithLoan] = useState<number>()
-  const [usersWithSavings, setUsersWithSavings] = useState<number>()
+  const [activeUsers, setActiveUsers] = useState<number>();
+  const [usersWithLoan, setUsersWithLoan] = useState<number>();
+  const [usersWithSavings, setUsersWithSavings] = useState<number>();
   console.log('users with savinggs', usersWithSavings);
 
   useEffect(() => {
@@ -39,13 +40,19 @@ const UsersSection: React.FC = () => {
     }
 
     if (storedUsers) {
-        const allUsers = JSON.parse(storedUsers)
-        const activeUsers = allUsers.filter((user: User) => user.status === "active")
-        const usersWithLoan = allUsers.filter((user:User) => Number(user.loanRepayment) > Number(user.monthlyIncome))
-        const usersWithSavings = allUsers.filter((user: User) => Number(user.monthlyIncome) > Number(user.loanRepayment))
-        setActiveUsers(activeUsers.length)
-        setUsersWithLoan(usersWithLoan.length)
-        setUsersWithSavings(usersWithSavings.length)
+      const allUsers = JSON.parse(storedUsers);
+      const activeUsers = allUsers.filter(
+        (user: User) => user.status === 'active',
+      );
+      const usersWithLoan = allUsers.filter(
+        (user: User) => Number(user.loanRepayment) > Number(user.monthlyIncome),
+      );
+      const usersWithSavings = allUsers.filter(
+        (user: User) => Number(user.monthlyIncome) > Number(user.loanRepayment),
+      );
+      setActiveUsers(activeUsers.length);
+      setUsersWithLoan(usersWithLoan.length);
+      setUsersWithSavings(usersWithSavings.length);
     }
   }, []);
   return (
@@ -132,7 +139,9 @@ const UsersSection: React.FC = () => {
               </MotionSpan>
             </MotionDiv>
             <MotionDiv
-              className={classes.usersection__content__analytics__usersWithSavings}
+              className={
+                classes.usersection__content__analytics__usersWithSavings
+              }
             >
               <MotionImage
                 src={totalUsersWithSavings}
@@ -157,9 +166,7 @@ const UsersSection: React.FC = () => {
               </MotionSpan>
             </MotionDiv>
           </MotionDiv>
-          <MotionDiv>
-            Users
-          </MotionDiv>
+          <UserTable users={users} />
         </MotionDiv>
       ) : (
         <MotionDiv className={classes.usersection__loadingholder}>
