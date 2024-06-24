@@ -42,3 +42,40 @@ export function dateConversion(data: string) {
 
   return formattedDateStr;
 }
+
+export function formatDate(date: Date) {
+  const parsedDate = new Date(date);
+
+  const year = parsedDate.getFullYear();
+  const month = String(parsedDate.getMonth() + 1).padStart(2, '0');
+  const day = String(parsedDate.getDate()).padStart(2, '0');
+
+  const formattedDateStr = `${year}-${month}-${day}`;
+  return formattedDateStr;
+}
+
+export interface Option {
+  value: string;
+  label: string;
+}
+
+export const organizations = [
+  {
+    value: 'Lendsqr',
+    label: 'Lendsqr',
+  },
+  {
+    value: 'Irorun',
+    label: 'Irorun',
+  },
+  {
+    value: 'Lushak',
+    label: 'Lushak',
+  },
+  {
+    value: 'Emcon',
+    label: 'Emcon',
+  },
+];
+
+export const statuses = ['inactive', 'active', 'pending', 'blacklisted'];

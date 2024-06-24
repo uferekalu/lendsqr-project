@@ -1,0 +1,104 @@
+@import '../../styles//variables.scss';
+
+.filtercomp {
+  display: block;
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  width: 270px;
+  background-color: $bg;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  padding: 20px 13px;
+  border-radius: 6px;
+  z-index: 1000;
+}
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  &__orgText,
+  &__usernameText,
+  &__emailText,
+  &__dateText,
+  &__phoneText {
+    display: flex;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  &__orgSelect,
+  &__usernameInput,
+  &__emailInput,
+  &__emailInput,
+  &__dateInput,
+  &__phoneInput,
+  &__statusSelect {
+    display: flex;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 3px;
+    border: 1px solid #d3d3d3;
+  }
+
+  &__usernameText,
+  &__emailText,
+  &__dateText,
+  &__phoneText {
+    margin-top: 10px;
+  }
+
+  &__statusSelect {
+    margin-top: 13px;
+  }
+
+  &__usernameInput::placeholder,
+  &__emailInput::placeholder,
+  &__phoneInput::placeholder {
+    font-size: 11px;
+  }
+
+  &__actionHolder {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+
+    &__reset {
+      display: flex;
+      padding: 10px;
+      border: 1px solid gray;
+      border-radius: 5px;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      width: 120px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    &__filter {
+      display: flex;
+      padding: 10px;
+      border: 1px solid $searchBtnBg;
+      border-radius: 5px;
+      justify-content: center;
+      align-items: center;
+      background-color: $searchBtnBg;
+      width: 120px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      color: white;
+    }
+  }
+
+  &__error {
+    display: flex;
+    font-size: 12px;
+    color: white;
+    background-color: rgb(234, 166, 166);
+    padding: 7px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+    font-style: italic;
+  }
+}

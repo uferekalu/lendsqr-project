@@ -6,6 +6,7 @@ export interface IMotionInput extends MotionProps {
   placeholder: string;
   className?: string;
   value: string;
+  name?: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -14,6 +15,7 @@ const MotionInput: React.FC<IMotionInput> = ({
   placeholder,
   className = '',
   value,
+  name,
   onChange,
   ...props
 }) => {
@@ -23,6 +25,7 @@ const MotionInput: React.FC<IMotionInput> = ({
       placeholder={placeholder}
       className={className}
       value={value}
+      name={name}
       onChange={onChange}
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}

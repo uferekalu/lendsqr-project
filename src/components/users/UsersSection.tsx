@@ -19,7 +19,7 @@ const UsersSection: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const route = 'e3be5931-6c3e-441b-ab1b-f6e5c41d18ba';
+      const route = '6e2e1d8a-8609-45ab-ad6a-c780691efca3';
       try {
         const usersData = await callAPI(route);
         if (usersData) {
