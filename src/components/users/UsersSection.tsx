@@ -10,12 +10,25 @@ import totalActiveUsers from '../../images/activeUsersIcon.svg';
 import totalUsersWithLoan from '../../images/usersWithLoanIcon.svg';
 import totalUsersWithSavings from '../../images/usersWithSavingsIcon.svg';
 import UserTable from './UserTable';
+import { numRange } from '../../utils/utility';
+import Pagination from '../pagination/Pagination';
 
 const UsersSection: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [activeUsers, setActiveUsers] = useState<number>();
   const [usersWithLoan, setUsersWithLoan] = useState<number>();
   const [usersWithSavings, setUsersWithSavings] = useState<number>();
+  const [pageRange, setPageRange] = useState<number>();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  let itemsPerPage: number = 15
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+  };
+
+  const handlePageRange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setPageRange(Number(e.target.value));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -166,7 +179,62 @@ const UsersSection: React.FC = () => {
               </MotionSpan>
             </MotionDiv>
           </MotionDiv>
-          <UserTable users={users} setUsers={setUsers} updateAnalytics={updateAnalytics} />
+          <UserTable
+            users={users}
+            setUsers={setUsers}
+            updateAnalytics={updateAnalytics}
+            pageRange={pageRange}
+            currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+          />
+          <MotionDiv className={classes.usersection__paginationSection}>
+            <MotionDiv
+              className={classes.usersection__paginationSection__rangeHolder}
+            >
+              <MotionSpan
+                className={
+                  classes.usersection__paginationSection__rangeHolder__caption
+                }
+              >
+                Showing
+              </MotionSpan>
+              <select
+                name="range"
+                className={
+                  classes.usersection__paginationSection__rangeHolder__range
+                }
+                onChange={handlePageRange}
+              >
+                <option value={itemsPerPage}>Select</option>
+                {numRange.map((num, index) => (
+                  <option key={index} value={num}>
+                    {num}
+                  </option>
+                ))}
+              </select>
+              <MotionSpan
+                className={
+                  classes.usersection__paginationSection__rangeHolder__size
+                }
+              >
+                {`Out of ${users.length}`}
+              </MotionSpan>
+            </MotionDiv>
+
+            <MotionDiv
+              className={
+                classes.usersection__paginationSection__paginationBtnsHolder
+              }
+            >
+              <Pagination
+                totalItems={users.length}
+                itemsPerPage={itemsPerPage}
+                onPageChange={handlePageChange}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            </MotionDiv>
+          </MotionDiv>
         </MotionDiv>
       ) : (
         <MotionDiv className={classes.usersection__loadingholder}>

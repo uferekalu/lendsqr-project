@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  &__button {
+    border: none;
+    // background-color: rgb(233, 227, 227);
+    font-size: 14px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.6;
+    }
+  }
+
+  &__previous,
+  &__next {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__ellipses {
+    font-size: 14px;
+  }
+
+  &__inactive {
+    // background-color: rgb(233, 227, 227);
+  }
+
+  &__active {
+    // background-color: rgb(200, 200, 200);
+    font-weight: bold;
+  }
+}

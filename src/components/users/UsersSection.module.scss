@@ -96,6 +96,28 @@
       }
     }
   }
+  &__paginationSection {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    &__rangeHolder,
+    &__paginationBtnsHolder {
+      display: flex;
+      gap: 10px;
+      &__caption,
+      &__size {
+        font-size: 12px;
+        font-weight: 500;
+      }
+      &__range {
+        padding: 7px;
+        border: none;
+        border-radius: 5px;
+        background-color: #d3d3d3;
+        margin-top: -3px;
+      }
+    }
+  }
 }
 
 @keyframes spin {
@@ -212,7 +234,7 @@
   display: block;
   position: absolute;
   background-color: $bg;
-//   box-shadow: 0px 0px 0.3px 0.3px rgba(0, 0, 0, 0.1);
+  //   box-shadow: 0px 0px 0.3px 0.3px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, box-shadow 0.3s;
   padding: 13px;
   border-radius: 5px;

@@ -79,3 +79,5 @@ export const organizations = [
 ];
 
 export const statuses = ['inactive', 'active', 'pending', 'blacklisted'];
+
+export const numRange = [100, 200, 300, 400, 500]
