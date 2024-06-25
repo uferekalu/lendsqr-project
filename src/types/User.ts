@@ -22,7 +22,9 @@ export interface User {
   dateJoined: string;
   status: string;
   bvn: string;
+  account: string;
   gender: string;
+  bank: string;
   maritalStatus: string;
   children: number;
   typeOfResidence: string;

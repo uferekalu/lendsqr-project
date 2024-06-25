@@ -15,6 +15,7 @@ import viewDetailIcon from '../../images/viewDetailIcon.svg';
 import blacklistUserIcon from '../../images/blacklistUserIcon.svg';
 import activateUserIcon from '../../images/activateUserIcon.svg';
 import Filter from '../filter/Filter';
+import { useNavigate }  from 'react-router-dom';
 
 interface UserTableProps {
   users: User[];
@@ -71,6 +72,8 @@ const UserTable: React.FC<UserTableProps> = ({
 
   const modalRef = useRef<HTMLDivElement>(null);
   const userTableRef = useRef<HTMLDivElement>(null);
+
+  const navigate = useNavigate();
 
   const handleDateChange = (date: Date | null) => {
     setFilterInformation({
@@ -475,7 +478,10 @@ const UserTable: React.FC<UserTableProps> = ({
                 className={classes.actionModal}
                 style={{ top: modalPosition.top, left: modalPosition.left }}
               >
-                <MotionDiv className={classes.actionModal__viewDetail}>
+                <MotionDiv
+                  className={classes.actionModal__viewDetail}
+                  onClick={() => navigate(`/dashboard/${user.id}`)}
+                >
                   <MotionImage
                     src={viewDetailIcon}
                     alt="view detail"

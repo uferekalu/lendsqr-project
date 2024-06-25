@@ -1,0 +1,294 @@
+@import '../../styles/variables.scss';
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  background-color: $dashboardBg;
+  width: 100%;
+  margin-top: 70px;
+  overflow-x: auto;
+
+  &__main {
+    display: flex;
+    flex: 1;
+    width: 100%;
+  }
+}
+.userDetailSection {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: $dashboardBg;
+  padding: 50px 110px 30px 110px;
+
+  @media (max-width: 1000px) and (min-width: 580px) {
+    display: flex;
+    flex: 1;
+    background-color: $dashboardBg;
+    padding: 10px;
+  }
+  @media (max-width: 1296px) and (min-width: 1001px) {
+    display: flex;
+    flex: 1;
+    background-color: $dashboardBg;
+    padding: 10px;
+  }
+  &__backHolder {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    &__text {
+      font-size: 12px;
+      color: $text;
+      margin-top: 4px;
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    &__text {
+      display: flex;
+      font-size: 17px;
+      font-weight: 600;
+      color: $text;
+    }
+    &__actionHolder {
+      display: flex;
+      gap: 10px;
+      &__blacklist {
+        color: rgba(228, 3, 59, 1);
+        padding: 8px 14px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background-color: transparent;
+        border: 1px solid rgba(228, 3, 59, 1);
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 600;
+      }
+      &__activate {
+        color: $searchBtnBg;
+        padding: 8px 14px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background-color: transparent;
+        border: 1px solid $searchBtnBg;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 600;
+      }
+    }
+  }
+  &__profile {
+    display: flex;
+    flex-direction: column;
+    padding: 22px 30px 0px 30px;
+    margin-top: 30px;
+    border-radius: 5px;
+    background-color: $bg;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    &__infoHolder {
+      display: flex;
+      gap: 14px;
+      &__img {
+        width: 90px;
+        height: 90px;
+      }
+      &__nameBVN {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 6px;
+        &__name {
+          font-size: 14px;
+          font-weight: 600;
+          color: $text;
+        }
+        &__BVN {
+          font-size: 12px;
+          color: $text;
+        }
+      }
+      &__usersTer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 6px;
+        &__text {
+          font-size: 12px;
+          color: $text;
+        }
+        &__starHolder {
+          display: flex;
+          gap: 10px;
+        }
+      }
+      &__accountInfoHolder {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 6px;
+        &__balance {
+          font-size: 14px;
+          font-weight: 600;
+          color: $text;
+        }
+        &__bankInfo {
+          font-size: 12px;
+          color: $text;
+        }
+      }
+    }
+    &__headings {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      &__general,
+      &__document,
+      &__bankDetails,
+      &__loans,
+      &__savings,
+      &__appSystem {
+        font-size: 14px;
+        color: $text;
+        font-weight: 500;
+        cursor: pointer;
+        position: relative;
+      }
+      &__selectedHeader {
+        color: $selectedBg;
+        padding-bottom: 7px;
+        position: relative;
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          height: 2px;
+          background-color: $selectedBg;
+          width: 100%;
+        }
+
+        &::before {
+          left: -20px;
+        }
+
+        &::after {
+          right: -20px;
+        }
+      }
+    }
+  }
+  &__personalInformation {
+    display: flex;
+    flex-direction: column;
+    padding: 22px 30px;
+    margin-top: 30px;
+    border-radius: 5px;
+    background-color: $bg;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    &__caption,
+    &__educationEmploymentCaption,
+    &__socialsCaption,
+    &__guarantorCaption {
+      font-size: 14px;
+      font-weight: 600;
+      color: $text;
+    }
+    &__educationEmploymentCaption,
+    &__socialsCaption,
+    &__guarantorCaption {
+      margin-top: 20px;
+    }
+    &__details,
+    &__educationEmploymentDetails,
+    &__socials,
+    &__guarantor {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 13px;
+      margin-top: 20px;
+      &__nameMaritalStatus,
+      &__phonChildren,
+      &__emailResidence,
+      &__BVN,
+      &__gender,
+      &__levelEmail,
+      &__employmentStatusIncome,
+      &__sectorLoan,
+      &__duration,
+      &__twitter,
+      &__facebook,
+      &__instagram,
+      &__fullName,
+      &__phone,
+      &__guarantorEmail,
+      &__relationship {
+        display: flex;
+        flex-direction: column;
+        &__name,
+        &__status,
+        &__phone,
+        &__children,
+        &__email,
+        &__residence,
+        &__caption,
+        &__levelCaption,
+        &__emailCaption,
+        &__employmentCaption,
+        &__income,
+        &__sectorCaption,
+        &__loanCaption,
+        &__caption {
+          font-size: 10px;
+          color: $text;
+        }
+        &__text,
+        &__statusText,
+        &__number,
+        &__childrenNumber,
+        &__emailAddress,
+        &__residenceAddress,
+        &__name,
+        &__levelText,
+        &__emailText,
+        &__employmentText,
+        &__incomeText,
+        &__sectorText,
+        &__loanText {
+          font-size: 12px;
+          color: $text;
+          font-weight: 600;
+          margin-top: 5px;
+        }
+        &__status,
+        &__children,
+        &__residence,
+        &__emailCaption,
+        &__income,
+        &__loanCaption {
+          margin-top: 20px;
+        }
+        &__statusText,
+        &__residenceAddress,
+        &__name {
+          text-transform: capitalize;
+        }
+      }
+      &__levelEmail {
+        margin-top: -10px;
+      }
+      &__employmentCaption {
+        margin-top: -20px;
+      }
+    }
+  }
+}

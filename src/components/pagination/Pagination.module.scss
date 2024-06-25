@@ -7,7 +7,6 @@
 
   &__button {
     border: none;
-    // background-color: rgb(233, 227, 227);
     font-size: 14px;
     padding: 5px 10px;
     cursor: pointer;
@@ -28,12 +27,7 @@
     font-size: 14px;
   }
 
-  &__inactive {
-    // background-color: rgb(233, 227, 227);
-  }
-
   &__active {
-    // background-color: rgb(200, 200, 200);
     font-weight: bold;
   }
 }
