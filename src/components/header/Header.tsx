@@ -5,9 +5,11 @@ import MotionDiv from '../MotionDiv';
 import ReusableLogo from '../login/ReusableLogo';
 import Search from '../search/Search';
 import MotionSpan from '../MotionSpan';
+import { User } from '../../types/User';
 
 const Header: React.FC = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const [authenticatedUser, setAuthenticatedUse] = useState<User>();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -18,6 +20,16 @@ const Header: React.FC = () => {
       setShowProfileDropdown(false);
     }
   };
+
+  useEffect(() => {
+    const getAuthenticatedUser = () => {
+      const authenticatedUser = localStorage.getItem('authenticatedUser');
+      if (authenticatedUser) {
+        setAuthenticatedUse(JSON.parse(authenticatedUser));
+      }
+    };
+    getAuthenticatedUser();
+  }, []);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -61,7 +73,7 @@ const Header: React.FC = () => {
           </g>
         </svg>
         <MotionSpan className={classes.header__userProfile__name}>
-          Goodnews
+          {authenticatedUser?.name}
         </MotionSpan>
       </MotionDiv>
       <MotionDiv

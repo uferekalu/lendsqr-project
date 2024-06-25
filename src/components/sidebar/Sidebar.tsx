@@ -26,15 +26,26 @@ import auditlogsIcon from '../../images/auditlogsIcon.svg';
 import systemMsgIcon from '../../images/systemMsgIcon.svg';
 import signoutIcon from '../../images/signoutIcon.svg';
 import MotionSpan from '../MotionSpan';
+import { useNavigate } from 'react-router-dom';
+import { useNotification } from '../notification/NotificationContext';
 
 const Sidebar: React.FC = () => {
   const [isUserActive, setIsUserActive] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 580);
   const [showFullMobileSidebar, setShowFullMobileSidebar] = useState(false);
+  const navigate = useNavigate();
+  const { addNotification } = useNotification();
 
   const handleResize = () => {
     setIsSmallScreen(window.innerWidth < 580);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authenticatedUser');
+    addNotification('Logged out successfully', 3000, 'rgba(57, 205, 204, 1)', 'white');
+    navigate('/');
+  };
+  
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -455,11 +466,13 @@ const Sidebar: React.FC = () => {
           alt="audit logs"
           className={classes.sidebar__auditlogs__img}
         />
-        <MotionSpan className={`${classes.sidebar__auditlogs__text}  ${
+        <MotionSpan
+          className={`${classes.sidebar__auditlogs__text}  ${
             isSmallScreen && showFullMobileSidebar
               ? classes.sidebar__mobile__auditlogs
               : ''
-          }`}>
+          }`}
+        >
           Audit Logs
         </MotionSpan>
       </MotionDiv>
@@ -469,11 +482,13 @@ const Sidebar: React.FC = () => {
           alt="system messages"
           className={classes.sidebar__systemmsg__img}
         />
-        <MotionSpan className={`${classes.sidebar__systemmsg__text}  ${
+        <MotionSpan
+          className={`${classes.sidebar__systemmsg__text}  ${
             isSmallScreen && showFullMobileSidebar
               ? classes.sidebar__mobile__systemmsg
               : ''
-          }`}>
+          }`}
+        >
           Systems Messages
         </MotionSpan>
       </MotionDiv>
@@ -483,11 +498,14 @@ const Sidebar: React.FC = () => {
           alt="signout"
           className={classes.sidebar__signout__img}
         />
-        <MotionSpan className={`${classes.sidebar__signout__text}  ${
+        <MotionSpan
+          className={`${classes.sidebar__signout__text}  ${
             isSmallScreen && showFullMobileSidebar
               ? classes.sidebar__mobile__signout
               : ''
-          }`}>
+          }`}
+          onClick={handleLogout}
+        >
           Logout
         </MotionSpan>
       </MotionDiv>

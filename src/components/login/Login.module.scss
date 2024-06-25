@@ -221,3 +221,11 @@
     }
   }
 }
+.loginLoading {
+  font-style: italic;
+  font-size: 14px;
+  &:disabled {
+    cursor: default;
+    opacity: 0.6;
+  }
+}

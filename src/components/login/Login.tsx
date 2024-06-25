@@ -8,6 +8,9 @@ import MotionInput from '../MotionInput';
 import MotionButton from '../MotionBtn';
 import { validateEmail, validatePassword } from '../../utils/utility';
 import ReusableLogo from './ReusableLogo';
+import { callAPI } from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
+import { useNotification } from '../notification/NotificationContext';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -15,6 +18,9 @@ const Login: React.FC = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { addNotification } = useNotification();
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -44,17 +50,64 @@ const Login: React.FC = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    let isValid = true;
+
     if (!email) {
       setEmailError('Email is required');
+      isValid = false;
+    } else {
+      setEmailError('');
     }
+
     if (!password) {
       setPasswordError('Password is required');
-      return;
+      isValid = false;
+    } else {
+      setPasswordError('');
     }
-    if (!emailError && !passwordError) {
-      // Handle login logic here
-      alert('Form submitted successfully');
+
+    if (!isValid) return;
+
+    setLoading(true);
+    const route = 'b4d0fc36-c69f-4407-92fc-6f9ba51249b1';
+
+    try {
+      const usersData = await callAPI(route);
+      if (usersData) {
+        const authenticatedUser = usersData.find(
+          (user) => user.email === email && user.password === password,
+        );
+
+        if (authenticatedUser) {
+          console.log(authenticatedUser);
+          localStorage.setItem(
+            'authenticatedUser',
+            JSON.stringify(authenticatedUser),
+          );
+          addNotification(
+            'Login successful!!',
+            3000,
+            'rgba(57, 205, 204, 1)',
+            'white',
+          );
+          navigate('/dashboard');
+        } else {
+          addNotification('Invalid Email or Password', 3000, 'brown', 'white');
+        }
+      } else {
+        addNotification('No user data returned', 3000, 'brown', 'white');
+      }
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      addNotification(
+        'An error occurred while logging in',
+        3000,
+        'brown',
+        'white',
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -109,15 +162,18 @@ const Login: React.FC = () => {
             emailError ? classes.loginHome__login__passwordshowExtra : ''
           }`}
         >
-          {showPassword ? 'HIDE': 'SHOW'}
+          {showPassword ? 'HIDE' : 'SHOW'}
         </MotionSpan>
         <MotionSpan className={classes.loginHome__login__forgotpw}>
           FORGOT PASSWORD?
         </MotionSpan>
         <MotionButton
-          text="LOG IN"
+          disabled={loading}
+          text={`${loading ? 'loading...' : 'LOG IN'}`}
           onClick={handleSubmit}
-          className={classes.loginHome__login__loginBtn}
+          className={`${classes.loginHome__login__loginBtn} ${
+            loading ? classes.loginLoading : ''
+          }`}
         />
       </MotionDiv>
     </MotionDiv>
