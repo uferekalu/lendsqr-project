@@ -15,7 +15,8 @@ import viewDetailIcon from '../../images/viewDetailIcon.svg';
 import blacklistUserIcon from '../../images/blacklistUserIcon.svg';
 import activateUserIcon from '../../images/activateUserIcon.svg';
 import Filter from '../filter/Filter';
-import { useNavigate }  from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useNotification } from '../notification/NotificationContext';
 
 interface UserTableProps {
   users: User[];
@@ -69,6 +70,7 @@ const UserTable: React.FC<UserTableProps> = ({
   const [updatedUsers, setUpdatedUsers] = useState<User[]>([]);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
+  const { addNotification } = useNotification();
 
   const modalRef = useRef<HTMLDivElement>(null);
   const userTableRef = useRef<HTMLDivElement>(null);
@@ -246,6 +248,12 @@ const UserTable: React.FC<UserTableProps> = ({
     updateAnalytics(updatedUsers);
 
     reapplyFilters();
+    addNotification(
+      'User activated successfully!!',
+      3000,
+      'rgba(57, 205, 204, 1)',
+      'white',
+    );
 
     setModalVisible(false);
     setActiveUserId(null);
@@ -260,6 +268,12 @@ const UserTable: React.FC<UserTableProps> = ({
 
     updateAnalytics(updatedUsers);
     reapplyFilters();
+    addNotification(
+      'User blacklisted successfully!!',
+      3000,
+      'rgba(57, 205, 204, 1)',
+      'white',
+    );
 
     setModalVisible(false);
     setActiveUserId(null);
