@@ -80,7 +80,6 @@ const Login: React.FC = () => {
         );
 
         if (authenticatedUser) {
-          console.log(authenticatedUser);
           localStorage.setItem(
             'authenticatedUser',
             JSON.stringify(authenticatedUser),

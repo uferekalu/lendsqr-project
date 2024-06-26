@@ -96,7 +96,7 @@ const UserDetailSection: React.FC = () => {
   }, [userId]);
 
   return (
-    <MotionDiv className={classes.userDetailSection}>
+    <MotionDiv className={classes.userDetailSection} data-testid="user-detail-component">
       <MotionDiv
         className={classes.userDetailSection__backHolder}
         onClick={() => navigate(`/dashboard`)}

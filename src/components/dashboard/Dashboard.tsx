@@ -7,7 +7,7 @@ import UsersSection from '../users/UsersSection';
 
 const Dashboard: React.FC = () => {
   return (
-    <MotionDiv className={classes.dashboard}>
+    <MotionDiv className={classes.dashboard} data-testid="dashboard-component">
       <Header />
       <MotionDiv className={classes.dashboard__main}>
         <Sidebar />
