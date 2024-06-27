@@ -1,46 +1,124 @@
-# Getting Started with Create React App
+# Project Title
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Admin User Management System
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This project is a user management system built with [React JS](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), [SCSS](https://sass-lang.com/), and [Framer Motion](https://www.framer.com/motion/) for animations. It includes the following pages:
+- **Login**
+- **Dashboard (Users)**
+- **User Detail Page**
 
-### `npm start`
+The application consumes a mocky API that contains 500 users. Users can access the app by logging in with the provided email and password.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The app was tested using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/). The tested components include:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- App
+- Login
+- Dashboard
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Login Page: Users can log in using the provided email and password.
+- Dashboard: Displays a list of users retrieved from the mocky API.
+- User Detail Page: Shows detailed information about a selected user.
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [React JS](https://reactjs.org/): A JavaScript library for building user interfaces.
+- [TypeScript](https://www.typescriptlang.org/): A superset of JavaScript that adds static types.
+- [SCSS](https://sass-lang.com/): A CSS preprocessor for styling.
+- [Framer Motion](https://www.framer.com/motion/): A library for animations in React.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The application consumes a mocky API with the following endpoint:
 
-### `npm run eject`
+- [Mocky API](https://run.mocky.io/v3/b4d0fc36-c69f-4407-92fc-6f9ba51249b1)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### User Interface
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```typescript
+interface User {
+  id: number;
+  organization: string;
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  phone: string;
+  dateJoined: string;
+  status: string;
+  bvn: string;
+  account: string;
+  gender: string;
+  bank: string;
+  maritalStatus: string;
+  children: number;
+  typeOfResidence: string;
+  levelOfEducation: string;
+  employmentStatus: string;
+  sectorOfEmployment: string;
+  durationOfEmployment: string;
+  monthlyIncome: string;
+  loanRepayment: string;
+  socials: Socials;
+  guarantor: Guarantor;
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Login Credentials
+Email: Elisabeth.Wiegand85@hotmail.com
+Password: tjEx%mK8
 
-## Learn More
+## Getting Started
+### Prerequisites
+Ensure you have the following installed on your local machine:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Node.js
+- npm or yarn
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation
+Clone the repository
+
+- git clone https://github.com/uferekalu/lendsqr-project.git
+- cd lendsqr-project
+
+## Install dependencies
+- npm install
+# or
+- yarn install
+
+## Start the development server
+- npm start
+# or
+- yarn start
+
+## Building for Production
+- npm run build
+# or
+- yarn build
+
+## Running Tests
+To run the test suite, use:
+
+-npm test
+# or
+- yarn test
+
+## Deployment
+The application is hosted on Vercel. You can access it using the following link: Admin User Management System
+
+## Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
+
+## License
+This project is licensed under the MIT License.
+
+## Acknowledgements
+- [React JS](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [SCSS](https://sass-lang.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+For any questions or issues, please open an issue on GitHub.
