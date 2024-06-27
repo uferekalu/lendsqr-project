@@ -10,6 +10,10 @@
     font-size: 14px;
     padding: 5px 10px;
     cursor: pointer;
+    @media (max-width: 580px) {
+      font-size: 11px;
+      padding: 5px;
+    }
 
     &:disabled {
       cursor: default;
@@ -21,6 +25,10 @@
   &__next {
     font-size: 16px;
     font-weight: bold;
+    @media (max-width: 580px) {
+      font-size: 11px;
+      
+    }
   }
 
   &__ellipses {

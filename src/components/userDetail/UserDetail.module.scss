@@ -33,6 +33,14 @@
     background-color: $dashboardBg;
     padding: 10px;
   }
+
+  @media (max-width: 580px) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: $dashboardBg;
+    padding: 20px 20px 20px 70px;
+  }
   &__backHolder {
     display: flex;
     gap: 10px;
@@ -47,6 +55,11 @@
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
+    @media (max-width: 580px) {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
     &__text {
       display: flex;
       font-size: 17px;

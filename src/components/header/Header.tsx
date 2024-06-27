@@ -7,7 +7,12 @@ import Search from '../search/Search';
 import MotionSpan from '../MotionSpan';
 import { User } from '../../types/User';
 
-const Header: React.FC = () => {
+interface IHeaderProps {
+  searchedUsers: User[];
+  setSearchedUsers: React.Dispatch<React.SetStateAction<User[]>>
+}
+
+const Header: React.FC<IHeaderProps> = ({ searchedUsers, setSearchedUsers }) => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [authenticatedUser, setAuthenticatedUse] = useState<User>();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -40,7 +45,7 @@ const Header: React.FC = () => {
   return (
     <MotionDiv className={classes.header}>
       <ReusableLogo />
-      <Search />
+      <Search searchedUsers={searchedUsers} setSearchedUsers={setSearchedUsers} />
       <MotionDiv className={classes.header__userProfile}>
         <MotionSpan className={classes.header__userProfile__doc}>
           Docs
@@ -97,7 +102,7 @@ const Header: React.FC = () => {
           </g>
         </svg>
         <MotionSpan className={classes.header__userProfileMobile__name}>
-          G
+          {authenticatedUser?.name.slice(0, 1).toUpperCase()}
         </MotionSpan>
         <MotionDiv
           style={

@@ -1,13 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './Search.module.scss';
 import MotionDiv from '../MotionDiv';
 import MotionInput from '../MotionInput';
+import { User } from '../../types/User';
 
-const Search: React.FC = () => {
+interface IHeaderProps {
+  searchedUsers: User[];
+  setSearchedUsers: React.Dispatch<React.SetStateAction<User[]>>;
+}
+
+const Search: React.FC<IHeaderProps> = ({ setSearchedUsers }) => {
   const [searchItem, setSearchItem] = useState('');
   const handleSearchTerm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchItem(e.target.value);
   };
+
+  useEffect(() => {
+    const fetchSearchedUsers = () => {
+      const storedUsers = localStorage.getItem('usersDetails');
+      if (storedUsers) {
+        const usersData = JSON.parse(storedUsers);
+        const users = usersData.filter(
+          (user: User) =>
+            user.organization
+              .toLowerCase()
+              .includes(searchItem.toLowerCase()) ||
+            user.username.toLowerCase().includes(searchItem.toLowerCase()) ||
+            user.email.toLowerCase().includes(searchItem.toLowerCase()) ||
+            user.phone.includes(searchItem.toLowerCase()) ||
+            user.status.includes(searchItem.toLowerCase()),
+        );
+        setSearchedUsers(users);
+      }
+    };
+    fetchSearchedUsers();
+  }, [searchItem, setSearchedUsers]);
+
   return (
     <MotionDiv className={classes.search}>
       <MotionInput
