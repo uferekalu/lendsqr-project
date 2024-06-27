@@ -72,6 +72,9 @@ interface User {
 Email: Elisabeth.Wiegand85@hotmail.com
 Password: tjEx%mK8
 
+## Video Introduction
+- [User Management Application](https://www.youtube.com/watch?v=EMl0CVNyKbg)
+
 ## Getting Started
 ### Prerequisites
 Ensure you have the following installed on your local machine:
