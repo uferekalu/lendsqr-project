@@ -70,10 +70,9 @@ const Login: React.FC = () => {
     if (!isValid) return;
 
     setLoading(true);
-    const route = 'b4d0fc36-c69f-4407-92fc-6f9ba51249b1';
-
+    
     try {
-      const usersData = await callAPI(route);
+      const usersData = await callAPI();
       if (usersData) {
         const authenticatedUser = usersData.find(
           (user) => user.email === email && user.password === password,

@@ -28,6 +28,8 @@ const UsersSection: React.FC<IUsersSectionProps> = ({ searchedUsers }) => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(15);
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
 
+  console.log(users)
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -38,9 +40,8 @@ const UsersSection: React.FC<IUsersSectionProps> = ({ searchedUsers }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const route = 'b4d0fc36-c69f-4407-92fc-6f9ba51249b1';
       try {
-        const usersData = await callAPI(route);
+        const usersData = await callAPI();
         if (usersData) {
           localStorage.setItem('usersDetails', JSON.stringify(usersData));
           setUsers(usersData);

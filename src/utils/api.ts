@@ -1,41 +1,20 @@
 import { User } from "../types/User";
+import usersData from '../../src/users.json'
 
 export interface ApiError extends Error {
   status?: number;
   errors?: any;
 }
 
-export async function callAPI(
-  route: string,
-  method: string = 'GET',
-  data: any = null,
-): Promise<User[] | null> {
-  const baseURL = 'https://run.mocky.io/v3/';
-  const url = baseURL + route;
-
-  const options: RequestInit = {
-    method: method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: data ? JSON.stringify(data) : null,
-  };
-
-  const response = await fetch(url, options);
-
-  if (response.ok) {
-    if (response.status === 204) {
-      return null;
-    }
-
-    const responseData: User[] = await response.json();
+export async function callAPI(): Promise<User[] | null> {
+  try {
+    const responseData: User[] = usersData;
     return responseData;
-  } else {
-    const errorData = await response.json();
-    const error: ApiError = new Error(`HTTP error! status: ${response.status}`);
-    error.status = response.status;
-    error.errors = errorData.errors;
-    throw error;
+  } catch (error: any) {
+    const apiError: ApiError = new Error(`Error loading users data`);
+    apiError.status = 500;
+    apiError.errors = [error.message];
+    throw apiError;
   }
 }
 
